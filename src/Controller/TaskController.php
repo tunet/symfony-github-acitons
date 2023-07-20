@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Task;
 use App\Repository\TaskRepository;
+use App\Service\TaskSorter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,7 @@ class TaskController extends AbstractController
 {
     public function __construct(
         private readonly TaskRepository $taskRepository,
+        private readonly TaskSorter $taskSorter,
     ) {
     }
 
@@ -21,9 +23,10 @@ class TaskController extends AbstractController
     public function index(): Response
     {
         $tasks = $this->taskRepository->findAll();
+        $sortedTasks = $this->taskSorter->sort($tasks);
 
         return $this->render('task/index.html.twig', [
-            'tasks' => $tasks,
+            'tasks' => $sortedTasks,
         ]);
     }
 
