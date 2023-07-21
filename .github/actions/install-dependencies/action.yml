@@ -1,9 +1,13 @@
-name: 'Install dependencies'
-description: 'Get code from repository and install composer dependencies'
+name: Install dependencies
+description: Cache and install composer dependencies
 runs:
-  using: 'composite'
+  using: composite
   steps:
-    - uses: 'actions/checkout@v3'
-    - name: 'Install composer'
-      run: 'make composer'
-      shell: 'bash'
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: deps-composer-${{ hashFiles('composer.lock') }}
+    - name: Install dependencies
+      run: make composer
+      shell: bash
