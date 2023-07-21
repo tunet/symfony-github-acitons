@@ -39,4 +39,4 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
       - name: Deploy
-        run: echo "Deploying..."
+        uses: ./.github/actions/deploy
