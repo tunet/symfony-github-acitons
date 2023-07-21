@@ -1,0 +1,6 @@
+name: Deployment
+on:
+  push:
+    branches:
+      - main
+      - feat-github-actions
