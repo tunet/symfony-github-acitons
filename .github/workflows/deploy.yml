@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
-        uses: ./github/actions/install-dependencies
+        uses: ./.github/actions/install-dependencies
       - name: Run unit tests
         run: make run-unit-tests
   integration-tests:
@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
-        uses: ./github/actions/install-dependencies
+        uses: ./.github/actions/install-dependencies
       - name: Run integration tests
         run: make run-integration-tests
   deploy:
@@ -36,6 +36,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
-        uses: ./github/actions/install-dependencies
+        uses: ./.github/actions/install-dependencies
       - name: Deploy
         run: echo "Deploying..."
