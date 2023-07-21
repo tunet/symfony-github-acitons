@@ -1,5 +1,5 @@
 FROM tunet/php-github-actions:0.1.0
 
-COPY entrypoint.php /entrypoint.php
+COPY deploy.php /deploy.php
 
-ENTRYPOINT ["/entrypoint.php"]
+ENTRYPOINT ["/deploy.php"]
