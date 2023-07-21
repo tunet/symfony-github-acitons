@@ -6,13 +6,6 @@ on:
       - feat-github-actions
 jobs:
   unit-tests:
-    services:
-      database:
-        image: postgres:13-alpine
-        env:
-          POSTGRES_DB: app_test
-          POSTGRES_PASSWORD: app
-          POSTGRES_USER: app
     runs-on: ubuntu-latest
     container: tunet/php-github-actions:0.1.0
     steps:
@@ -22,6 +15,13 @@ jobs:
       - name: Run unit tests
         run: make run-unit-tests
   integration-tests:
+    services:
+      database:
+        image: postgres:13-alpine
+        env:
+          POSTGRES_DB: app_test
+          POSTGRES_PASSWORD: app
+          POSTGRES_USER: app
     runs-on: ubuntu-latest
     container: tunet/php-github-actions:0.1.0
     steps:
