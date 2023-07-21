@@ -9,13 +9,8 @@ jobs:
     container: tunet/php-github-actions:0.1.0
     steps:
       - uses: actions/checkout@v3
-      - name: Cache composer dependencies
-        uses: actions/cache@v3
-        with:
-          path: vendor
-          key: deps-composer-${{ hashFiles('composer.lock') }}
       - name: Install dependencies
-        run: make composer
+        uses: ./github/actions/install-dependencies
       - name: Run unit tests
         run: make run-unit-tests
   integration-tests:
@@ -30,13 +25,8 @@ jobs:
     container: tunet/php-github-actions:0.1.0
     steps:
       - uses: actions/checkout@v3
-      - name: Cache composer dependencies
-        uses: actions/cache@v3
-        with:
-          path: vendor
-          key: deps-composer-${{ hashFiles('composer.lock') }}
       - name: Install dependencies
-        run: make composer
+        uses: ./github/actions/install-dependencies
       - name: Run integration tests
         run: make run-integration-tests
   deploy:
@@ -45,12 +35,7 @@ jobs:
     container: tunet/php-github-actions:0.1.0
     steps:
       - uses: actions/checkout@v3
-      - name: Cache composer dependencies
-        uses: actions/cache@v3
-        with:
-          path: vendor
-          key: deps-composer-${{ hashFiles('composer.lock') }}
       - name: Install dependencies
-        run: make composer
+        uses: ./github/actions/install-dependencies
       - name: Deploy
         run: echo "Deploying..."
