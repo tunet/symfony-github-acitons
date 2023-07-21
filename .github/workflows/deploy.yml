@@ -39,3 +39,7 @@ jobs:
         uses: ./.github/actions/install-dependencies
       - name: Deploy
         uses: ./.github/actions/deploy
+        with:
+          ssh-host: ${{ secrets.SSH_HOST }}
+          ssh-user: ${{ secrets.SSH_USER }}
+          ssh-password: ${{ secrets.SSH_PASSWORD }}
