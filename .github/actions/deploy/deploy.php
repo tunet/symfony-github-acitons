@@ -6,7 +6,7 @@
 
 $files = new DirectoryIterator(__DIR__);
 
-foreach ($files as $file)
+foreach ($files as $file) {
     echo $file->getFilename() . PHP_EOL;
 }
 
